@@ -1,8 +1,12 @@
 import { SiteLink } from "@/components/site-link";
+import { getPosts } from "@/content/posts";
 import { site } from "@/content/site";
 
+const hasPublishedWriting = getPosts().some((post) => !post.meta.draft);
+
 export function Header() {
-  const desktop = site.nav.filter((item) => item.label !== "Projects");
+  const nav = site.nav.filter((item) => hasPublishedWriting || item.href !== "/#writing");
+  const desktop = nav.filter((item) => item.label !== "Projects");
 
   return (
     <header className="site-header" id="top">
@@ -29,7 +33,7 @@ export function Header() {
             <span className="when-open">Close</span>
           </summary>
           <nav className="nav-panel" aria-label="Mobile">
-            {site.nav.map((item) => (
+            {nav.map((item) => (
               <SiteLink key={item.href} href={item.href}>
                 {item.label}
               </SiteLink>

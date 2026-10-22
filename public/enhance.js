@@ -83,6 +83,14 @@ document.querySelectorAll("[data-magnetic]").forEach((el) => {
   });
 });
 
+document.querySelectorAll(".bento-tile").forEach((el) => {
+  el.addEventListener("pointermove", (event) => {
+    const rect = el.getBoundingClientRect();
+    el.style.setProperty("--spot-x", `${event.clientX - rect.left}px`);
+    el.style.setProperty("--spot-y", `${event.clientY - rect.top}px`);
+  });
+});
+
 document.querySelectorAll("[data-tilt]").forEach((el) => {
   el.addEventListener("mousemove", (event) => {
     const rect = el.getBoundingClientRect();
