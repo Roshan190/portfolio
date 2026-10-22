@@ -46,7 +46,6 @@ export const site = {
   headline:
     "Senior Frontend / Fullstack Engineer | React, Next.js, Node.js | Enterprise & Product Web Applications",
   location: "Mumbai, India",
-  availability: "Open to senior fullstack roles from January 2027",
   description:
     "Senior Fullstack Engineer in Mumbai with 5+ years shipping end-to-end products using React, Next.js, Node.js, PostgreSQL, and MongoDB.",
   /**

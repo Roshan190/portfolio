@@ -239,7 +239,7 @@ body:has(.pier-shell) .site-footer {
   font-size: clamp(1.4rem, 3vw, 2.1rem);
   color: var(--amber-2);
 }
-.entry-headline, .entry-availability, .entry-note { max-width: 38rem; color: var(--muted); }
+.entry-headline, .entry-note { max-width: 38rem; color: var(--muted); }
 .entry-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.4rem; }
 
 .pier-shell canvas { display: block; width: 100% !important; height: 100dvh !important; }
@@ -322,7 +322,6 @@ body:has(.pier-shell), body:has(.entry) { overflow: hidden; }
   padding: 2rem 0 3rem;
 }
 .hero h1 { font-size: clamp(3.5rem, 8vw, 7rem); margin: 0 0 1rem; }
-.hero-availability { color: var(--amber-2); }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.4rem; }
 .band { padding: 3.2rem 0; }
 .section-head h2 { font-size: clamp(2.2rem, 5vw, 4rem); margin: 0 0 1.2rem; max-width: 16ch; }

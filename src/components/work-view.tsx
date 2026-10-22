@@ -13,7 +13,6 @@ export function WorkView() {
         <p className="kicker">{site.location}</p>
         <h1>{site.name}</h1>
         <p className="lede">{site.headline}</p>
-        <p className="hero-availability">{site.availability}</p>
         <div className="hero-actions">
           <SiteLink className="btn btn-amber" href="/work#projects" data-magnetic>
             Projects

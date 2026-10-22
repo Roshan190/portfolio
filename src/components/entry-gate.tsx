@@ -68,7 +68,6 @@ export function EntryGate() {
         <h1>{site.name}</h1>
         <p className="entry-role">{site.role}</p>
         <p className="entry-headline">{site.headline}</p>
-        <p className="entry-availability">{site.availability}</p>
         {plainDefault ? (
           <p className="entry-note">
             This device gets the still image. 3D loads only if you ask for it.
