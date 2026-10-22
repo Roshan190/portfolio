@@ -13,6 +13,8 @@ function htmlFiles(dir, found = []) {
 const scriptPattern = /<script\b([^>]*)>([\s\S]*?)<\/script>/g;
 
 for (const file of htmlFiles("out")) {
+  // The pier entry is a client page. Every other route is plain HTML.
+  if (file === join("out", "index.html")) continue;
   const html = readFileSync(file, "utf8");
   const next = html
     .replace(/<link\b[^>]*rel="preload"[^>]*as="script"[^>]*>/g, "")

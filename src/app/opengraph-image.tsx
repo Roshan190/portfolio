@@ -16,8 +16,8 @@ export default function OpenGraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#f4f0e6",
-          color: "#1a1b21",
+          background: "#07080c",
+          color: "#efe7d8",
           padding: "56px 64px",
         }}
       >
@@ -27,18 +27,18 @@ export default function OpenGraphImage() {
               display: "flex",
               width: "180px",
               height: "12px",
-              background: "#d6f25a",
+              background: "#f0b45a",
               marginBottom: "36px",
             }}
           />
-          <div style={{ display: "flex", fontSize: 28, letterSpacing: 2 }}>
+          <div style={{ display: "flex", fontSize: 28, letterSpacing: 4, color: "#7ec8c3" }}>
             MUMBAI, INDIA
           </div>
           <div
             style={{
               display: "flex",
               fontSize: 84,
-              fontWeight: 700,
+              fontWeight: 560,
               letterSpacing: -3,
               lineHeight: 1,
               marginTop: 16,
@@ -46,7 +46,7 @@ export default function OpenGraphImage() {
           >
             Roshan Shikhare
           </div>
-          <div style={{ display: "flex", fontSize: 34, marginTop: 18 }}>
+          <div style={{ display: "flex", fontSize: 34, marginTop: 18, color: "#ffd89a" }}>
             Senior Fullstack Engineer
           </div>
         </div>

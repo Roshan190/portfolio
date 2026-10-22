@@ -1,4 +1,4 @@
-import { ExternalLink } from "@/components/external-link";
+import { SiteLink } from "@/components/site-link";
 import { site } from "@/content/site";
 
 export function Footer() {
@@ -9,12 +9,15 @@ export function Footer() {
           {site.name} · {site.location}
         </p>
         <nav className="footer-nav" aria-label="Footer">
-          <ExternalLink href={site.socials.linkedin} me>
+          <a href={site.socials.linkedin} target="_blank" rel="me noopener noreferrer">
             LinkedIn
-          </ExternalLink>
-          <ExternalLink href={site.socials.github} me>
+            <span className="sr-only"> (opens in a new tab)</span>
+          </a>
+          <a href={site.socials.github} target="_blank" rel="me noopener noreferrer">
             GitHub
-          </ExternalLink>
+            <span className="sr-only"> (opens in a new tab)</span>
+          </a>
+          <SiteLink href="/work">Projects</SiteLink>
           <a href="#top">Back to top</a>
         </nav>
       </div>

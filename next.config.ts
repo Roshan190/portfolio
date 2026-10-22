@@ -10,6 +10,12 @@ const nextConfig: NextConfig = {
   images: { unoptimized: true },
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   ...(basePath ? { basePath } : {}),
+  transpilePackages: [
+    "three",
+    "@react-three/fiber",
+    "@react-three/drei",
+    "@react-three/postprocessing",
+  ],
   turbopack: {
     rules: {
       "*.css": {

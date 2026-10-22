@@ -2,6 +2,8 @@
 
 Personal site for recruiters and hiring managers. Next.js App Router, TypeScript, and Tailwind CSS, built as a static export. GitHub Actions publishes it to GitHub Pages at [https://roshan190.github.io/portfolio/](https://roshan190.github.io/portfolio/).
 
+The homepage is a dark entry into a lantern-lit pier. Projects sit on the pier as lit objects and open at `/projects/[slug]`. `/work` is the fast recruiter view, with no 3D. Phones, small or weak devices, and `prefers-reduced-motion` stay on that plain view and only load 3D if asked. Sound is synthesized in the browser and stays off until it is turned on.
+
 ## Edit content
 
 Public copy lives in [`src/content/site.ts`](src/content/site.ts). That includes the headline, about text, experience, projects, skills, and contact links.

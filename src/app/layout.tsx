@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Outfit, Syne } from "next/font/google";
+import { Fraunces, Manrope } from "next/font/google";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { JsonLd } from "@/components/json-ld";
@@ -7,19 +7,21 @@ import { site } from "@/content/site";
 import { getBasePath, getSiteUrl } from "@/lib/url";
 import "./globals.css";
 
-const syne = Syne({
+const display = Fraunces({
   subsets: ["latin"],
-  variable: "--font-syne",
   display: "swap",
+  variable: "--font-display",
 });
 
-const outfit = Outfit({
+const body = Manrope({
   subsets: ["latin"],
-  variable: "--font-outfit",
   display: "swap",
+  variable: "--font-body",
+  weight: ["400", "600", "700"],
 });
 
-const themeBootScript = `(function(){try{var stored=localStorage.getItem("theme");var theme=stored==="light"||stored==="dark"?stored:(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");var root=document.documentElement;root.classList.remove("light","dark");root.classList.add(theme);root.style.colorScheme=theme;}catch(e){}document.addEventListener("click",function(event){var target=event.target;if(!target||!target.closest)return;if(target.closest("#theme-toggle")){var next=document.documentElement.classList.contains("dark")?"light":"dark";document.documentElement.classList.remove("light","dark");document.documentElement.classList.add(next);document.documentElement.style.colorScheme=next;try{localStorage.setItem("theme",next);}catch(err){}}var link=target.closest(".nav-panel a");if(link){var details=link.closest("details");if(details)details.open=false;}});})();`;
+const base = getBasePath();
+const bootScript = `(function(){document.addEventListener("click",function(event){var target=event.target;if(!target||!target.closest)return;var link=target.closest(".nav-panel a");if(!link)return;var details=link.closest("details");if(details)details.open=false;});if(document.querySelector(".entry,.pier-shell"))return;if(!window.matchMedia("(min-width: 900px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)").matches)return;var script=document.createElement("script");script.type="module";script.src=${JSON.stringify(`${base}/enhance.js`)};document.body.appendChild(script);})();`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
@@ -56,23 +58,13 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f4f0e6" },
-    { media: "(prefers-color-scheme: dark)", color: "#0e1016" },
-  ],
-  colorScheme: "light dark",
+  themeColor: "#07080c",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${syne.variable} ${outfit.variable}`}
-    >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
-      </head>
+    <html lang="en" className={`${display.variable} ${body.variable}`} data-base={base}>
       <body>
         <a className="skip-link" href="#main">
           Skip to content
@@ -81,6 +73,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main id="main">{children}</main>
         <Footer />
         <JsonLd />
+        <script dangerouslySetInnerHTML={{ __html: bootScript }} />
       </body>
     </html>
   );
