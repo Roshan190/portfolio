@@ -13,10 +13,17 @@ export function getSiteUrl(): string {
   return url.replace(/\/$/, "");
 }
 
-export function absoluteUrl(path: string): string {
-  const base = getSiteUrl();
+/** Public site root. Includes the base path once, even if the site URL already ends with it. */
+export function getPublicRoot(): string {
+  const site = getSiteUrl();
   const prefix = getBasePath();
-  if (path === "/" || path === "") return `${base}${prefix}/`;
+  if (!prefix || site.endsWith(prefix)) return site;
+  return `${site}${prefix}`;
+}
+
+export function absoluteUrl(path: string): string {
+  const base = getPublicRoot();
+  if (path === "/" || path === "") return `${base}/`;
   const normalized = path.startsWith("/") ? path : `/${path}`;
-  return `${base}${prefix}${normalized}`;
+  return `${base}${normalized}`;
 }

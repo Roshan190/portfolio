@@ -4,7 +4,7 @@ import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { JsonLd } from "@/components/json-ld";
 import { site } from "@/content/site";
-import { getSiteUrl } from "@/lib/url";
+import { getBasePath, getSiteUrl } from "@/lib/url";
 import "./globals.css";
 
 const syne = Syne({
@@ -47,6 +47,10 @@ export const metadata: Metadata = {
     description: site.description,
   },
   robots: { index: true, follow: true },
+  icons: {
+    icon: `${getBasePath()}/icon`,
+    apple: `${getBasePath()}/apple-icon`,
+  },
 };
 
 export const viewport: Viewport = {

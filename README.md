@@ -1,6 +1,6 @@
 # Roshan Shikhare — portfolio
 
-Personal site for recruiters and hiring managers. Next.js App Router, TypeScript, and Tailwind CSS, built as a static export so it can be hosted on Vercel or GitHub Pages later. Deployment is not set up in this repo.
+Personal site for recruiters and hiring managers. Next.js App Router, TypeScript, and Tailwind CSS, built as a static export. GitHub Actions publishes it to GitHub Pages at [https://roshan190.github.io/portfolio/](https://roshan190.github.io/portfolio/).
 
 ## Edit content
 
@@ -28,7 +28,15 @@ Copy `.env.example` if you want to override the defaults.
 | `NEXT_PUBLIC_SITE_URL` | Origin used for canonical, Open Graph, sitemap, and JSON-LD. |
 | `NEXT_PUBLIC_BASE_PATH` | Subpath such as `/portfolio` for a GitHub Pages project site. Leave empty when the site is served from the domain root. |
 
-Both are read at build time.
+Both are read at build time. The Pages workflow sets them to `https://roshan190.github.io/portfolio` and `/portfolio`. There is no custom domain.
+
+## GitHub Pages
+
+[`.github/workflows/pages.yml`](.github/workflows/pages.yml) runs on pushes to `main` and, until that lands, on `cursor/portfolio-site-259e`. It builds the static export and deploys with `actions/upload-pages-artifact` and `actions/deploy-pages`.
+
+The artifact root is `out/`. GitHub Pages serves that root at `/portfolio/`, and `NEXT_PUBLIC_BASE_PATH` prefixes links and assets to match. `public/.nojekyll` is copied into the export so paths under `_next/` are not dropped.
+
+Pages must use the GitHub Actions source. The `github-pages` environment must allow both `main` and `cursor/portfolio-site-259e` until the preview branch is no longer needed.
 
 ## Placeholders
 
@@ -36,7 +44,7 @@ Both are read at build time.
 - `email` in `src/content/site.ts` — optional. Hidden while empty.
 - Bajaj Finserv role — one public sentence for now. A comment in `src/content/site.ts` marks where Roshan will add details later.
 - `src/content/posts/placeholder-draft.mdx` — scaffold draft, not a published article. It is `noindex`.
-- `NEXT_PUBLIC_SITE_URL` — set this before a real deploy so canonical URLs and the sitemap are not `localhost`.
+- `NEXT_PUBLIC_SITE_URL` — the Pages workflow sets the public origin. A local build without it still falls back to `http://localhost:3000`.
 
 ## Privacy
 
