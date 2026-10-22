@@ -1,1 +1,43 @@
-# portfolio
+# Roshan Shikhare — portfolio
+
+Personal site for recruiters and hiring managers. Next.js App Router, TypeScript, and Tailwind CSS, built as a static export so it can be hosted on Vercel or GitHub Pages later. Deployment is not set up in this repo.
+
+## Edit content
+
+Public copy lives in [`src/content/site.ts`](src/content/site.ts). That includes the headline, about text, experience, projects, skills, and contact links.
+
+Blog posts are the exception: add an `.mdx` file in `src/content/posts`, export a `meta` object (`title`, `description`, `date`, `draft`), and register it in [`src/content/posts.ts`](src/content/posts.ts).
+
+## Scripts
+
+```bash
+npm install
+npm run dev
+npm run lint
+npm run build
+```
+
+`npm run build` writes the static site to `out/` and then removes the Next.js client runtime from the HTML. Pages are server-rendered HTML and CSS. The theme toggle and mobile menu use a small inline script, so the site does not need the framework bundle. `next start` does not serve an export. After a build, use any static file server against `out/`.
+
+## Environment
+
+Copy `.env.example` if you want to override the defaults.
+
+| Variable | Purpose |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Origin used for canonical, Open Graph, sitemap, and JSON-LD. |
+| `NEXT_PUBLIC_BASE_PATH` | Subpath such as `/portfolio` for a GitHub Pages project site. Leave empty when the site is served from the domain root. |
+
+Both are read at build time.
+
+## Placeholders
+
+- `resumeUrl` in `src/content/site.ts` — hosted resume PDF. The button stays hidden while this is empty.
+- `email` in `src/content/site.ts` — optional. Hidden while empty.
+- Bajaj Finserv role — one public sentence for now. A comment in `src/content/site.ts` marks where Roshan will add details later.
+- `src/content/posts/placeholder-draft.mdx` — scaffold draft, not a published article. It is `noindex`.
+- `NEXT_PUBLIC_SITE_URL` — set this before a real deploy so canonical URLs and the sitemap are not `localhost`.
+
+## Privacy
+
+Do not commit a resume PDF. The source résumé includes a phone number. Do not add a phone number to the site. The build runs `scripts/check-privacy.mjs`, which fails if a 10-digit phone number appears in the source, or if an email appears while `email` is empty.
