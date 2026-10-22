@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { EntryGate } from "@/components/entry-gate";
 import { site } from "@/content/site";
+import { getBasePath } from "@/lib/url";
 
 export const metadata: Metadata = {
   description: site.description,
@@ -8,5 +9,10 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return <EntryGate />;
+  return (
+    <>
+      <link rel="preload" as="image" href={`${getBasePath()}/pier-still.jpg`} />
+      <EntryGate />
+    </>
+  );
 }

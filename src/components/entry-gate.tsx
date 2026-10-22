@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import { SiteLink } from "@/components/site-link";
 import { site } from "@/content/site";
 import { useOpenPier, usePlainDefault, useReducedMotion } from "@/lib/device";
+import { getBasePath } from "@/lib/url";
 import { sound } from "@/components/pier/sound";
+
+const stillSrc = `${getBasePath()}/pier-still.jpg`;
 
 const PierExperience = dynamic(
   () => import("@/components/pier/pier-experience").then((mod) => mod.PierExperience),
@@ -42,13 +44,12 @@ export function EntryGate() {
 
   return (
     <section className={`entry${plainDefault ? " is-plain" : ""}`}>
-      <Image
+      {/* next/image omits basePath from the exported src and preload. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
         className="entry-still"
-        src="/pier-still.jpg"
+        src={stillSrc}
         alt="Lantern-lit pier at night on still water, the explorable view of the projects"
-        fill
-        priority
-        sizes="100vw"
       />
       <div className="entry-scrim" aria-hidden="true" />
       <header className="entry-bar">
