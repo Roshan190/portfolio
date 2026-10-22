@@ -17,7 +17,8 @@ export function Footer() {
             GitHub
             <span className="sr-only"> (opens in a new tab)</span>
           </a>
-          <SiteLink href="/work">Projects</SiteLink>
+          <SiteLink href="/">Home</SiteLink>
+          <SiteLink href="/#projects">Projects</SiteLink>
           <a href="#top">Back to top</a>
         </nav>
       </div>

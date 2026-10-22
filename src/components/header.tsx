@@ -2,11 +2,10 @@ import { SiteLink } from "@/components/site-link";
 import { site } from "@/content/site";
 
 export function Header() {
-  const projects = site.nav[0];
-  const rest = site.nav.slice(1);
+  const desktop = site.nav.filter((item) => item.label !== "Projects");
 
   return (
-    <header className="site-header">
+    <header className="site-header" id="top">
       <div className="wrap header-inner">
         <SiteLink href="/" className="brand">
           <span className="brand-mark" aria-hidden="true">
@@ -14,16 +13,15 @@ export function Header() {
           </span>
           <span className="brand-name">{site.name}</span>
         </SiteLink>
-        <SiteLink href={projects.href} className="projects-link">
-          {projects.label}
+        <SiteLink href="/#projects" className="projects-link">
+          Projects
         </SiteLink>
         <nav className="nav-desktop" aria-label="Primary">
-          {rest.map((item) => (
+          {desktop.map((item) => (
             <SiteLink key={item.href} href={item.href}>
               {item.label}
             </SiteLink>
           ))}
-          <SiteLink href="/">The pier</SiteLink>
         </nav>
         <details className="nav-details">
           <summary className="nav-summary">
@@ -36,7 +34,6 @@ export function Header() {
                 {item.label}
               </SiteLink>
             ))}
-            <SiteLink href="/">The pier</SiteLink>
           </nav>
         </details>
       </div>

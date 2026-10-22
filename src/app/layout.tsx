@@ -21,7 +21,7 @@ const body = Manrope({
 });
 
 const base = getBasePath();
-const bootScript = `(function(){document.addEventListener("click",function(event){var target=event.target;if(!target||!target.closest)return;var link=target.closest(".nav-panel a");if(!link)return;var details=link.closest("details");if(details)details.open=false;});if(document.querySelector(".entry,.pier-shell"))return;if(!window.matchMedia("(min-width: 900px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)").matches)return;var script=document.createElement("script");script.type="module";script.src=${JSON.stringify(`${base}/enhance.js`)};document.body.appendChild(script);})();`;
+const bootScript = `(function(){document.addEventListener("click",function(event){var target=event.target;if(!target||!target.closest)return;var link=target.closest(".nav-panel a");if(!link)return;var details=link.closest("details");if(details)details.open=false;});if(!window.matchMedia("(min-width: 900px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)").matches)return;var script=document.createElement("script");script.type="module";script.src=${JSON.stringify(`${base}/enhance.js`)};document.body.appendChild(script);})();`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),

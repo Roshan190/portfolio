@@ -2,7 +2,7 @@
 
 Personal site for recruiters and hiring managers. Next.js App Router, TypeScript, and Tailwind CSS, built as a static export. GitHub Actions publishes it to GitHub Pages at [https://roshan190.github.io/portfolio/](https://roshan190.github.io/portfolio/).
 
-The homepage is a dark entry into a lantern-lit pier. Projects sit on the pier as lit objects and open at `/projects/[slug]`. `/work` is the fast recruiter view, with no 3D. Phones, small or weak devices, and `prefers-reduced-motion` stay on that plain view and only load 3D if asked. Sound is synthesized in the browser and stays off until it is turned on.
+The homepage is the recruiter page: hero, about, experience, projects, skills, writing, and contact. Project write-ups live at `/projects/[slug]`. `/work` is a static redirect back to `/`. Desktop screens with a fine pointer load smooth scrolling and motion from `public/enhance.js`. Reduced motion and smaller screens keep native scrolling.
 
 ## Edit content
 
@@ -19,7 +19,7 @@ npm run lint
 npm run build
 ```
 
-`npm run build` writes the static site to `out/` and then removes the Next.js client runtime from the HTML. Pages are server-rendered HTML and CSS. The theme toggle and mobile menu use a small inline script, so the site does not need the framework bundle. `next start` does not serve an export. After a build, use any static file server against `out/`.
+`npm run build` writes the static site to `out/` and then removes the Next.js client runtime from the HTML. Pages are server-rendered HTML and CSS. The mobile menu uses a small inline script, and desktop motion is a separate file, so the site does not need the framework bundle. `next start` does not serve an export. After a build, use any static file server against `out/`.
 
 ## Environment
 

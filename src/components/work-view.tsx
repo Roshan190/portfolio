@@ -8,17 +8,24 @@ const posts = getPosts();
 
 export function WorkView() {
   return (
-    <div className="work" id="top">
+    <div className="work">
       <section className="hero wrap">
+        <div className="hero-glow" data-parallax aria-hidden="true" />
         <p className="kicker">{site.location}</p>
         <h1>{site.name}</h1>
-        <p className="lede">{site.headline}</p>
+        <p className="lede stagger-line">
+          {site.headline.split(" ").map((word, index) => (
+            <span key={`${word}-${index}`} className="word">
+              {word}
+            </span>
+          ))}
+        </p>
         <div className="hero-actions">
-          <SiteLink className="btn btn-amber" href="/work#projects" data-magnetic>
+          <SiteLink className="btn btn-amber" href="/#projects" data-magnetic>
             Projects
           </SiteLink>
-          <SiteLink className="btn btn-ghost" href="/" data-magnetic>
-            Enter the pier
+          <SiteLink className="btn btn-ghost" href="/#contact" data-magnetic>
+            Contact
           </SiteLink>
           {site.resumeUrl ? (
             <a className="btn btn-ghost" href={site.resumeUrl} data-magnetic>
@@ -92,7 +99,7 @@ export function WorkView() {
       <section className="band wrap" id="projects">
         <div className="section-head reveal">
           <p className="kicker">Projects</p>
-          <h2>The work, without the pier.</h2>
+          <h2>Selected work.</h2>
         </div>
         <div className="project-list">
           {site.projects.map((project) => {

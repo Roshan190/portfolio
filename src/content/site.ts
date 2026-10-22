@@ -297,11 +297,12 @@ export const site = {
     body: "The best way to reach me is LinkedIn. I use it for roles and for conversations about the work.",
   },
   nav: [
-    { href: "/work", label: "Projects" },
-    { href: "/work#about", label: "About" },
-    { href: "/work#experience", label: "Experience" },
-    { href: "/work#skills", label: "Skills" },
-    { href: "/work#writing", label: "Writing" },
-    { href: "/work#contact", label: "Contact" },
+    { href: "/", label: "Home" },
+    { href: "/#projects", label: "Projects" },
+    { href: "/#about", label: "About" },
+    { href: "/#experience", label: "Experience" },
+    { href: "/#skills", label: "Skills" },
+    { href: "/#writing", label: "Writing" },
+    { href: "/#contact", label: "Contact" },
   ],
 } as const;

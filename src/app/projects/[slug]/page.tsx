@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SiteLink } from "@/components/site-link";
-import { getSceneProject, sceneProjects } from "@/lib/projects";
+import { getProject, projectPages } from "@/lib/projects";
 
 type Params = { slug: string };
 
 export function generateStaticParams() {
-  return sceneProjects.map((item) => ({ slug: item.slug }));
+  return projectPages.map((item) => ({ slug: item.slug }));
 }
 
 export const dynamicParams = false;
@@ -17,7 +17,7 @@ export async function generateMetadata({
   params: Promise<Params>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const item = getSceneProject(slug);
+  const item = getProject(slug);
   if (!item) return { title: "Project" };
   return {
     title: item.project.name,
@@ -28,16 +28,14 @@ export async function generateMetadata({
 
 export default async function ProjectPage({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
-  const item = getSceneProject(slug);
+  const item = getProject(slug);
   if (!item) notFound();
   const { project } = item;
 
   return (
     <article className="wrap project-page">
       <p className="kicker">
-        <SiteLink href="/#pier">Back to the pier</SiteLink>
-        {" · "}
-        <SiteLink href="/work#projects">All projects</SiteLink>
+        <SiteLink href="/#projects">All projects</SiteLink>
       </p>
       <p className="meta-label">{project.featured ? "Featured" : project.context}</p>
       <h1>{project.name}</h1>
@@ -81,8 +79,8 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
         </div>
       ) : null}
       <p className="back-row">
-        <SiteLink className="btn btn-ghost" href="/#pier" data-magnetic>
-          Back to the pier
+        <SiteLink className="btn btn-ghost" href="/#projects" data-magnetic>
+          Back to projects
         </SiteLink>
       </p>
     </article>
